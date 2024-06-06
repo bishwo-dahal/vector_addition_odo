@@ -1,3 +1,5 @@
+# THIS IS A COPY OF REPOSITORY OF ORNL OLCF WHICH CAN BE FOUND AT https://code.ornl.gov/olcf/
+
 # vector_addition
 
 This repository contains vector addition codes written for multiple parallel programming models as well as combinations of them. Each directory contains a stand-alone code, and the name of the directories should indicate the programming model(s) used. 
