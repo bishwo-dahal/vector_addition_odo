@@ -1,5 +1,6 @@
 *.sif
 res/
+res
 *.o
 *.swp
 .*.*.swp
