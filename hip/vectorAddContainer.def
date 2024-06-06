@@ -1,0 +1,30 @@
+Bootstrap: localimage
+From: /ccsopen/home/bishwodahal/containers/olcf_projects/built_sifs/openSuseFile.sif
+
+%environment
+    export MPICH_DIR= /opt/mpich
+    export PATH="$MPICH_DIR/bin:$PATH"
+    export LD_LIBRARY_PATH="$MPICH_DIR/lib:$LD_LIBRARY_PATH"
+    export MANPATH=$MPICH_DIR/share/man:$MANPATH
+    # Point to rocm locations
+    export ROCM_PATH=/opt/rocm
+    export LD_LIBRARY_PATH="/opt/rocm/lib:/opt/rocm/lib64:$LD_LIBRARY_PATH"
+    export PATH="/opt/rocm/bin:$PATH"
+
+%files
+	vAdd_hip.cpp /vAdd_hip.cpp
+	Makefile /Makefile
+	# Makefile.hipcc /Makefile.hipcc
+%post
+
+	which hipcc
+	# hipcc -c  vAdd_hip.cpp -I${MPICH_DIR}/include
+	hipcc --amdgpu-target=gfx90a -c vAdd_hip.cpp
+	ls -lrt
+	hipcc  --amdgpu-target=gfx90a  vAdd_hip.o -o vAdd_hip 
+	#mpicc   -o vAdd_hip.exe  vAdd_hip.o -L${ROCM_PATH}/lib -lamdhip64 -pthread
+	# make
+	
+
+
+

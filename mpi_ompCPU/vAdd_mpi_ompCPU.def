@@ -1,0 +1,15 @@
+Bootstrap: localimage
+From: /ccsopen/home/bishwodahal/containers/olcf_projects/built_sifs/openSuseFile.sif
+
+
+%environment
+	
+
+%files
+	vAdd_mpi_ompCPU.cpp /vAdd_mpi_ompCPU.cpp
+
+
+%post
+	g++ -fopenmp -lmpi -L${MPICH_DIR}/lib -I${MPICH_DIR}/include vAdd_mpi_ompCPU.cpp -o vAdd_mpi_ompCPU
+	ls -lrt /
+

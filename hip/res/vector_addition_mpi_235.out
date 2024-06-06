@@ -1,0 +1,6 @@
+Test passed.
+Result              = 1.0000000000000000
+Relative difference = 0.0000000000000000
+Tolerance           = 0.0000000000000100
+Array buffer size   = 2147483648
+Elapsed time (s)    = 0.005445

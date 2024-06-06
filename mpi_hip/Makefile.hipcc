@@ -1,0 +1,16 @@
+COMP      = hipcc
+FLAGS     = --amdgpu-target=gfx90a
+
+INCLUDES  = -I${CRAY_MPICH_PREFIX}/include
+LIBRARIES = -L${CRAY_MPICH_PREFIX}/lib -lmpi
+
+vAdd_mpi_hip: vAdd_mpi_hip.o
+	$(COMP) $(FLAGS) $(LIBRARIES) vAdd_mpi_hip.o -o vAdd_mpi_hip
+
+vAdd_mpi_hip.o: vAdd_mpi_hip.cpp
+	$(COMP) $(FLAGS) $(INCLUDES) -c vAdd_mpi_hip.cpp
+
+.PHONY: clean
+
+clean:
+	rm -f vAdd_mpi_hip *.o
