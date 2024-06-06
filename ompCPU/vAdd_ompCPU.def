@@ -1,0 +1,12 @@
+Bootstrap: localimage
+From: /ccsopen/home/bishwodahal/containers/olcf_projects/built_sifs/openSuseFile.sif
+
+
+%files 
+	vAdd_ompCPU.cpp /vAdd_ompCPU.cpp
+
+	
+%post
+	g++ -fopenmp  vAdd_ompCPU.cpp -o vAdd_ompCPU  
+	ls -lrt /
+	
