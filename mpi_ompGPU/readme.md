@@ -1,4 +1,4 @@
-# Running MPI in Odo using g++
+# Running MPI and OMP in Odo using g++
 
 ### MUST LOAD amd-mixed module to run on your local node/ compute node
 
