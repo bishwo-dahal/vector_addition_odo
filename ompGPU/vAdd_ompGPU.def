@@ -7,6 +7,6 @@ From: /ccsopen/home/bishwodahal/containers/olcf_projects/built_sifs/openSuseFile
 
 	
 %post
-	g++ -fopenmp -foffload="-march=gfx90a -lm"  vAdd_ompGPU.cpp -o vAdd_ompGPU  
+	amdclang++ -fopenmp -I/usr/lib64/gcc/x86_64-suse-linux/7/include  vAdd_ompGPU.cpp -o vAdd_ompGPU  
 	ls -lrt /
 	

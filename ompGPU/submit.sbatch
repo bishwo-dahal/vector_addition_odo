@@ -14,5 +14,5 @@ module load cray-mpich/8.1.23
 
 export MPICH_GPU_SUPPORT_ENABLED=1
 
-srun -N2 apptainer exec App_vAdd_ompCPU.sif /vAdd_ompCPU
+srun -N2 apptainer exec App_vAdd_ompGPU.sif /vAdd_ompGPU
 
