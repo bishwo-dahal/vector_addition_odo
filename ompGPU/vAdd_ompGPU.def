@@ -1,0 +1,12 @@
+Bootstrap: localimage
+From: /ccsopen/home/bishwodahal/containers/olcf_projects/built_sifs/openSuseFile.sif
+
+
+%files 
+	vAdd_ompGPU.cpp /vAdd_ompGPU.cpp
+
+	
+%post
+	g++ -fopenmp -foffload="-march=gfx90a -lm"  vAdd_ompGPU.cpp -o vAdd_ompGPU  
+	ls -lrt /
+	

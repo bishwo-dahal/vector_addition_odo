@@ -1,5 +1,5 @@
 COMP  = g++
-FLAGS = -fopenmp -lamdhip64  -L/opt/rocm-5.5.1/lib -I/opt/rocm-5.5.1/include/ -D__HIP_PLATFORM_AMD__
+FLAGS = -fopenmp -lamdhip64 -lmpi -L/opt/mpich/lib -I${MPICH_DIR}/include -L/opt/rocm-5.5.1/lib -I/opt/rocm-5.5.1/include/ -D__HIP_PLATFORM_AMD__
 
 vAdd_hip_ompCPU: vAdd_hip_ompCPU.o
 	ls -lrt && $(COMP) $(FLAGS)  vAdd_hip_ompCPU.o -o vAdd_hip_ompCPU

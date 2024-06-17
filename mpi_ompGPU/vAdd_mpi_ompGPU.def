@@ -1,0 +1,16 @@
+Bootstrap: localimage
+From: /ccsopen/home/bishwodahal/containers/olcf_projects/built_sifs/openSuseFile.sif
+
+
+%environment
+
+	# nothing needed here but just added
+
+
+
+%files 
+	vAdd_mpi_ompGPU.cpp /vAdd_mpi_ompGPU.cpp
+
+%post
+	g++ -lmpi -fopenmp -L${MPICH_DIR}/lib -I${MPICH_DIR}/include    vAdd_mpi_ompGPU.cpp -o vAdd_mpi_ompGPU
+	ls -lrt /

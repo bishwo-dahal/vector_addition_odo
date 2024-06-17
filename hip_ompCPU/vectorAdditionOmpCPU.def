@@ -18,8 +18,11 @@ From: /ccsopen/home/bishwodahal/containers/olcf_projects/built_sifs/openSuseFile
 	Makefile /Makefile
 
 %post
+	ls -lrt /opt/rocm-5.5.1/llvm/lib/clang/16.0.0/include/ 
 	ls -lrt	
-	make -f Makefile
-	#gcc -o vAdd_hip_ompCPU.cp
+	# make -f Makefile
+	# gcc -o vAdd_hip_ompCPU.cp
+	hipcc -fopenmp -fopenmp-extensions -L/opt/rocm-5.5.1/lib -I/opt/rocm-5.5.1/include/ -I/opt/rocm-5.5.1/llvm/lib/clang/16.0.0/include/ -target x86_64-pc-linux-gnu  -fopenmp -target x86_64-pc-linux-gnu  --offload-arch=gfx90a  vAdd_hip_ompCPU.cpp -o vAdd_hip_ompCPU
+
 	ls -lrt
 
