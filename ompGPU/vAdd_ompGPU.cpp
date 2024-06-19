@@ -10,7 +10,8 @@ int main(int argc, char *argv[]){
     long long int N = 32*1024*1024;
 
     double tolerance = 1.0e-14;
-
+	int device_id = omp_get_device_num();
+print("%d is device id",device_id);
     size_t buffer_size = N * sizeof(double);
 
     double *A = (double*)malloc(buffer_size);

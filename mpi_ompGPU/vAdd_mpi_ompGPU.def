@@ -11,6 +11,6 @@ From: /ccsopen/home/bishwodahal/containers/olcf_projects/built_sifs/openSuseFile
 %files 
 	vAdd_mpi_ompGPU.cpp /vAdd_mpi_ompGPU.cpp
 
-%post
-	amdclang++ -lmpi -fopenmp -fopenmp=libomp --offload-arch=gfx90a -L${MPICH_DIR}/lib -I${MPICH_DIR}/include -I/usr/lib64/gcc/x86_64-suse-linux/7/include   vAdd_mpi_ompGPU.cpp -o vAdd_mpi_ompGPU
+%post 
+	amdclang++   ${PE_MPICH_GTL_DIR_amd_gfx90a} ${PE_MPICH_GTL_LIBS_amd_gfx90a}  -lmpi -fopenmp  --offload-arch=gfx90a -fopenmp -target x86_64-pc-linux-gnu -fopenmp-targets=amdgcn-amd-amdhsa -Xopenmp-target=amdgcn-amd-amdhsa -march=gfx90a -L${MPICH_DIR}/lib -I${MPICH_DIR}/include -I/usr/lib64/gcc/x86_64-suse-linux/7/include -I/opt/rocm-5.7.1/include/   vAdd_mpi_ompGPU.cpp -o vAdd_mpi_ompGPU
 	ls -lrt /
