@@ -15,4 +15,4 @@ module load  cray-mpich/8.1.23
 # This is to run GPU with MPI
 export MPICH_GPU_SUPPORT_ENABLED=1
 
-srun -N1 --gpus-per-task=5 apptainer exec App_vectorAddContainer.sif  /vAdd_hip
+srun -N1 --gpus-per-task=5 apptainer exec App_vAdd_hip.sif  /vAdd_hip

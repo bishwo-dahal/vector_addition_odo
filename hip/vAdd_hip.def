@@ -14,7 +14,6 @@ From: /ccsopen/home/bishwodahal/containers/olcf_projects/built_sifs/openSuseFile
 %files
 	vAdd_hip.cpp /vAdd_hip.cpp
 	Makefile /Makefile
-	# Makefile.hipcc /Makefile.hipcc
 %post
 
 	which hipcc
