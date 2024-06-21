@@ -1,0 +1,25 @@
+Bootstrap: localimage
+From: /ccsopen/home/bishwodahal/containers/olcf_projects/built_sifs/openSuseFile.sif
+
+
+%environment
+#	export MPICH_DIR= /opt/mpich
+       export PATH="$MPICH_DIR/bin:$PATH"
+       export LD_LIBRARY_PATH="$MPICH_DIR/lib:$LD_LIBRARY_PATH"
+       export MANPATH=$MPICH_DIR/share/man:$MANPATH
+       # Point to rocm locations
+      export ROCM_PATH=/opt/rocm
+      export LD_LIBRARY_PATH="/opt/rocm/lib:/opt/rocm/lib64:$LD_LIBRARY_PATH"
+      export PATH="/opt/rocm/bin:$PATH"
+
+%files 
+	vAdd.cpp /vAdd.cpp
+	vAdd_gpu.cpp /vAdd_gpu.cpp
+	vAdd_gpu.h /vAdd_gpu.h
+		
+%post
+	# amdclang++ solution compiling but pass failing
+	# amdclang++ -I${MPICH_DIR}/include -L${MPICH_DIR}/lib -I/opt/rocm-5.7.1/include/ -L/opt/rocm-5.7.1/lib/ -lmpi -lamdhip64 -x hip vAdd_mpi_hip.cpp -o vAdd_mpi_hip 
+	hipcc -I${MPICH_DIR}/include -L${MPICH_DIR}/lib -I/opt/rocm-5.7.1/include     -L/opt/rocm-5.7.1/lib/  -lmpi vAdd.cpp vAdd_gpu.cpp -o vAdd_mpi_hip
+	ls -lrt
+	
