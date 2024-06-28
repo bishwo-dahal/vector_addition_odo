@@ -1,0 +1,25 @@
+Bootstrap: localimage
+From: ./opensusempich342rocm571.sif
+
+
+%environment
+    export MPICH_DIR=/opt/mpich
+    export PATH="$MPICH_DIR/bin:$PATH"
+    export LD_LIBRARY_PATH="$MPICH_DIR/lib:$LD_LIBRARY_PATH"
+    export MANPATH=$MPICH_DIR/share/man:$MANPATH
+    # Point to rocm locations
+    export ROCM_PATH=/opt/rocm
+    export LD_LIBRARY_PATH="/opt/rocm/lib:/opt/rocm/lib64:$LD_LIBRARY_PATH"
+    export PATH="/opt/rocm/bin:$PATH"
+
+
+%files
+	vAdd_hip_ompCPU.cpp /vAdd_hip_ompCPU.cpp
+	Makefile /Makefile
+
+%post
+	ls -lrt	
+	hipcc -fopenmp -fopenmp-extensions -target x86_64-pc-linux-gnu  --offload-arch=gfx90a  vAdd_hip_ompCPU.cpp -o vAdd_hip_ompCPU
+
+	ls -lrt
+
