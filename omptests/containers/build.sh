@@ -12,15 +12,4 @@ set -ex
 # The main file for building all the sif files
 $APPTAINER build -F opensusempich342rocm571.sif opensusempich342rocm571.def
 
-
-
-#$APPTAINER build -F  vAdd_hip_ompCPU.sif vAdd_hip_ompCPU.def
-#$APPTAINER build -F vAdd_hip_ompCPU_separateFiles.sif vAdd_hip_ompCPU_separateFiles.def
-#$APPTAINER build -F vAdd_mpi_ompCPU.sif vAdd_mpi_ompCPU.def
-#$APPTAINER build -F vAdd_mpi_ompCPU_hip.sif vAdd_mpi_ompCPU_hip.def
-#$APPTAINER build -F vAdd_mpi_ompGPU.sif vAdd_mpi_ompGPU.def
-#$APPTAINER build -F vAdd_ompCPU.sif vAdd_ompCPU.def
-#$APPTAINER build -F vAdd_ompGPU.sif vAdd_ompGPU.def
-
-
-
+# If you want to build separate sif files for all tests, do it here below

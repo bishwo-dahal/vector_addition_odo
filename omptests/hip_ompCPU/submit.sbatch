@@ -19,5 +19,5 @@ export CONTAINER=../containers/opensusempich342rocm571.sif
 export APPTAINER=apptainer
 
 srun -N2 $APPTAINER exec --rocm  $CONTAINER  hipcc  -fopenmp -fopenmp-extensions -target x86_64-pc-linux-gnu  --offload-arch=gfx90a  ./vAdd_hip_ompCPU.cpp -o vAdd_hip_ompCPU
-srun -N2 $APPTAINER exec $CONTAINERS/opensusempich342rocm571.sif ./vAdd_hip_ompCPU
+srun -N2 $APPTAINER exec $CONTAINER ./vAdd_hip_ompCPU
 

@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH -A trn025
 #SBATCH -N2
-#SBATCH -J Vector_addition_on_cpu_OMP_HIP
+#SBATCH -J Vector_addition_on_cpu_OMP_HIP_separate_files
 #SBATCH -t 15:00
 #SBATCH -o /res/%x_%j.out
 #SBATCH -e /res/%x_%j.err
